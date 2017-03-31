@@ -13,6 +13,10 @@ app.get('/', function (req, res){
     res.send('<h1>Hello Node.js</h1>');
 });
 
+app.get('/list',function (req, res){
+    res.json(list.findAll());
+});
+
 
 
 app.listen(app.get('port'), function() {

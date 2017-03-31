@@ -32,3 +32,8 @@ app.listen(app.get('port'), function() {
 });
 
 
+app.get('/index', function(req, res){
+    res.send('<h1>This is index page</h1>');
+});
+
+

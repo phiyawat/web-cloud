@@ -1,15 +1,15 @@
 var list =
 {
-  id: [
+  "id": [
     {
-      Facebook: 'www.facebook.com/golfcity.golfview'
+      "Facebook": 'www.facebook.com/golfcity.golfview'
     },
     {
-      Facebook: 'www.facebook.com/golfcity.golfview',
-      Instragram: '@cityparktu'
+      "Facebook": 'www.facebook.com/golfcity.golfview',
+      "Instragram": '@cityparktu'
     },
     {
-      Email: 'skyview.apartment@gmail.com'
+      "Email": 'skyview.apartment@gmail.com'
     }
   ]
 }

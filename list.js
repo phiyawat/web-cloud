@@ -1,6 +1,6 @@
 var list =
 {
-  "id": [
+  "id":[
     {
       "Facebook": 'www.facebook.com/golfcity.golfview'
     },

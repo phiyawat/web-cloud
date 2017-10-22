@@ -9,7 +9,7 @@ var list =
       "Instragram": '@cityparktu'
     },
     {
-      "Email": 'skyview.apartment@gmail.com'
+      "Facebook": 'skyview.apartment@gmail.com'
     }
   ]
 }

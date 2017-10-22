@@ -12,7 +12,7 @@ var list =
       "Facebook": 'skyview.apartment@gmail.com'
     }
   ]
-}
+};
 
 exports.findAll = function(){
     return list;

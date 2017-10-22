@@ -22,6 +22,10 @@ app.get('/list/:id', function (req, res) {
   res.json(list.findById(id))
 })
 
+app.get('/index', function (req, res) {
+  res.send('<h1>This is index page</h1>')
+})
+
 app.post('/newlist', function (req, res) {
   var json = req.body
   res.send('Add new ' + json.name + ' Completed!')
@@ -29,8 +33,4 @@ app.post('/newlist', function (req, res) {
 
 app.listen(app.get('port'), function () {
   console.log('Node app is running on port', app.get('port'))
-})
-
-app.get('/index', function (req, res) {
-  res.send('<h1>This is index page</h1>')
 })

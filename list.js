@@ -7,6 +7,7 @@ var list =
 ]
 
 exports.findAll = function () {
+  console.log('List: ' + list)
   return list
 }
 

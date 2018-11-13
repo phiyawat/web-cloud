@@ -70,5 +70,6 @@ app.post("/charges", function(req, res) {
   );
 });
 
-app.listen(8080);
-console.log("My Service is listening to port 8080.");
+app.listen(port, function() {
+  console.log("Starting node.js on port" + port);
+});

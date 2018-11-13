@@ -39,58 +39,57 @@ app.post("/newlist", function(req, res) {
   res.send("Add new " + json.name + " Completed!");
 });
 
-// beware of port to cloud
-app.listen(app.get("port"), function() {
-  console.log("Node app is running on port", app.get("port"));
+app.post("/card", function(req, res) {
+  var data = req.body;
+  var dataString =
+    "card[name]=JOHN DOE&card[number]=" +
+    data.number +
+    "&card[security_code]=" +
+    data.code +
+    "&card[expiration_month]=" +
+    data.expireMonth +
+    "&card[expiration_year]=" +
+    data.expireYear;
+  request.post(
+    "https://vault.omise.co/tokens",
+    {
+      auth: {
+        user: publicKey
+      },
+      body: dataString
+    },
+    function(error, response, body) {
+      res.send(body);
+    }
+  );
 });
 
-app.post("/card", function(req, res) {
-    var data = req.body;
-    var dataString =
-      "card[name]=JOHN DOE&card[number]=" +
-      data.number +
-      "&card[security_code]=" +
-      data.code +
-      "&card[expiration_month]=" +
-      data.expireMonth +
-      "&card[expiration_year]=" +
-      data.expireYear;
-    request.post(
-      "https://vault.omise.co/tokens",
-      {
-        auth: {
-          user: publicKey
-        },
-        body: dataString
+app.post("/charges", function(req, res) {
+  var data = req.body;
+  var dataString =
+    "description=Charge for order 3947&amount=" +
+    data.prices +
+    "&currency=thb&return_uri=http://www.example.com/orders/3947/complete&card=" +
+    data.tokens;
+  request.post(
+    "https://api.omise.co/charges",
+    {
+      auth: {
+        user: privateKey
       },
-      function(error, response, body) {
-        res.send(body);
-      }
-    );
-  });
-  
-  app.post("/charges", function(req, res) {
-    var data = req.body;
-    var dataString =
-      "description=Charge for order 3947&amount=" +
-      data.prices +
-      "&currency=thb&return_uri=http://www.example.com/orders/3947/complete&card=" +
-      data.tokens;
-    request.post(
-      "https://api.omise.co/charges",
-      {
-        auth: {
-          user: privateKey
-        },
-        body: dataString
-      },
-      function(error, response, body) {
-        res.send(body);
-      }
-    );
-  });
-  
+      body: dataString
+    },
+    function(error, response, body) {
+      res.send(body);
+    }
+  );
+});
 
 app.get("/index", function(req, res) {
   res.send("<h1>This is index page</h1>");
+});
+
+// beware of port to cloud
+app.listen(app.get("port"), function() {
+  console.log("Node app is running on port", app.get("port"));
 });

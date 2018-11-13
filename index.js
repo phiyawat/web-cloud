@@ -3,9 +3,14 @@ var app = express();
 var list = require("./list");
 var bodyParser = require("body-parser");
 var request = require("request");
+var publicKey = "pkey_test_5dk77lui11gdmmp9jc4";
+var privateKey = "skey_test_5dk77lui9m6jv0s33pp";
+
 app.set("port", process.env.PORT || 5000);
 
 app.use(express.static(__dirname + "/public"));
+
+app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

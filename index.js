@@ -89,6 +89,27 @@ app.post("/charges", function(req, res) {
   );
 });
 
+app.post("/bluePay", function(req, res) {
+  // let data = req.body;
+  let dataString =
+    "MERCHANT=100144703153" +
+    "&TAMPER_PROOF_SEAL=74acff4399d6d72dbcab8dc130038ef9" +
+    "&TRANSACTION_TYPE=SALE" +
+    "&AMOUNT=3.00" +
+    "&NAME1=BluePay Customer" +
+    "&CC_NUM=4111111111111111" +
+    "&CC_EXPIRES=1215";
+  request.post(
+    "https://secure.bluepay.com/interfaces/bp10emu",
+    {
+      body: dataString
+    },
+    function(error, response, body) {
+      res.send(body);
+    }
+  );
+});
+
 app.get("/index", function(req, res) {
   res.send("<h1>This is index page</h1>");
 });

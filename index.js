@@ -91,7 +91,7 @@ app.post("/charges", function(req, res) {
 
 app.post("/bluePay", function(req, res) {
   // let data = req.body;
-  let dataString =
+  var dataString =
     "MERCHANT=100144703153" +
     "&TAMPER_PROOF_SEAL=74acff4399d6d72dbcab8dc130038ef9" +
     "&TRANSACTION_TYPE=SALE" +

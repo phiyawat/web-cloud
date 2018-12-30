@@ -29,11 +29,6 @@ app.get("/", function(req, res) {
   res.send("<h1>Hello Node.js</h1>");
 });
 
-app.get("/list", function(req, res) {
-  var data = req.body;
-  res.redirect(data.url);
-});
-
 app.get("/list/:id", function(req, res) {
   var id = req.params.id;
   res.json(list.findById(id));
@@ -91,6 +86,7 @@ app.post("/charges", function(req, res) {
 });
 
 app.post("/linePay", function(req, res) {
+  var data = req.body;
   var headers = {
     "Content-Type": "application/json",
     "X-LINE-ChannelId": "1634944383",
@@ -98,8 +94,8 @@ app.post("/linePay", function(req, res) {
     "X-LINE-MerchantDeviceProfileId": "DEVICE PROFILE ID"
   };
   var dataString = {
-    productName: "test product",
-    amount: 10,
+    productName: "TUMoreSheet",
+    amount: data.prices,
     currency: "THB",
     orderId: "20140101123456789",
     confirmUrl: "https://my-project-9d06f.firebaseapp.com/Order/BuyAll"

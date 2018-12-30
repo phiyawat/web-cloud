@@ -30,7 +30,8 @@ app.get("/", function(req, res) {
 });
 
 app.get("/list", function(req, res) {
-  res.json(list.findAll());
+  var data = req.body;
+  res.redirect(data.url);
 });
 
 app.get("/list/:id", function(req, res) {

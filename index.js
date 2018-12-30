@@ -89,19 +89,41 @@ app.post("/charges", function(req, res) {
   );
 });
 
-app.post("/bluePay", function(req, res) {
+app.post("/linePay", function(req, res) {
   // let data = req.body;
-  let dataString =
-    "MERCHANT=100144703153" +
-    "&TAMPER_PROOF_SEAL=74acff4399d6d72dbcab8dc130038ef9" +
-    "&TRANSACTION_TYPE=SALE" +
-    "&AMOUNT=3.00" +
-    "&NAME1=BluePay Customer" +
-    "&CC_NUM=4111111111111111" +
-    "&CC_EXPIRES=1215";
+  var headers = {
+    "Content-Type": "application/json",
+    "X-LINE-ChannelId": "1634944383",
+    "X-LINE-ChannelSecret": "61ccd09a220863c54c519a88cba9d1d1",
+    "X-LINE-MerchantDeviceProfileId": "DEVICE PROFILE ID"
+  };
+  var dataString = {
+    productName: "test product",
+    productImageUrl: "http://testst.com",
+    amount: 10,
+    currency: "USD",
+    mid: "os89dufgoiw8yer9021384rdfeq",
+    orderId: "20140101123456789",
+    confirmUrl:
+      "naversearchapp://inappbrowser?url= http%3A%2F%2FtestMall.com%2FcheckResult.nhn%3ForderId%3D20140101123456789",
+    cancelUrl:
+      "naversearchapp://inappbrowser?url= http%3A%2F%2FtestMall.com%2ForderSheet.nhn%3ForderId%3D20140101123456789",
+    capture: "true",
+    confirmUrlType: "CLIENT",
+    extras: {
+      addFriends: [
+        {
+          type: "LINE_AT",
+          idList: ["@aaa", "@bbb"]
+        }
+      ],
+      branchName: "test_branch_1"
+    }
+  };
   request.post(
-    "https://secure.bluepay.com/interfaces/bp10emu",
+    "https://sandbox-api-pay.line.me/v2/payments/request",
     {
+      headers: headers,
       body: dataString
     },
     function(error, response, body) {

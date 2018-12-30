@@ -91,7 +91,6 @@ app.post("/charges", function(req, res) {
 
 app.post("/linePay", function(req, res) {
   // let data = req.body;
-<<<<<<< HEAD
   var headers = {
     "Content-Type": "application/json",
     "X-LINE-ChannelId": "1634944383",
@@ -121,16 +120,6 @@ app.post("/linePay", function(req, res) {
       branchName: "test_branch_1"
     }
   };
-=======
-  var dataString =
-    "MERCHANT=100144703153" +
-    "&TAMPER_PROOF_SEAL=74acff4399d6d72dbcab8dc130038ef9" +
-    "&TRANSACTION_TYPE=SALE" +
-    "&AMOUNT=3.00" +
-    "&NAME1=BluePay Customer" +
-    "&CC_NUM=4111111111111111" +
-    "&CC_EXPIRES=1215";
->>>>>>> ef853ceffb6ca71cab09af887d6914fbf89c0f32
   request.post(
     "https://sandbox-api-pay.line.me/v2/payments/request",
     {

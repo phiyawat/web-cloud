@@ -107,7 +107,7 @@ app.post("/linePay", function(req, res) {
     "https://sandbox-api-pay.line.me/v2/payments/request",
     {
       headers: headers,
-      body: dataString
+      body: JSON.stringify(dataString)
     },
     function(error, response, body) {
       res.send(body);

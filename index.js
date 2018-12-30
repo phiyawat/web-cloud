@@ -102,7 +102,7 @@ app.post("/linePay", function(req, res) {
     currency: "THB",
     orderId: "20140101123456789",
     confirmUrl: "https://my-project-9d06f.firebaseapp.com/Order/BuyAll",
-    confirmUrlType: "SERVER"
+    confirmUrlType: "CLIENT"
   };
   request.post(
     "https://sandbox-api-pay.line.me/v2/payments/request",

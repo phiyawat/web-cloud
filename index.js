@@ -90,7 +90,6 @@ app.post("/charges", function(req, res) {
 });
 
 app.post("/linePay", function(req, res) {
-  // let data = req.body;
   var headers = {
     "Content-Type": "application/json",
     "X-LINE-ChannelId": "1634944383",
@@ -99,26 +98,10 @@ app.post("/linePay", function(req, res) {
   };
   var dataString = {
     productName: "test product",
-    productImageUrl: "http://testst.com",
     amount: 10,
-    currency: "USD",
-    mid: "os89dufgoiw8yer9021384rdfeq",
+    currency: "THB",
     orderId: "20140101123456789",
-    confirmUrl:
-      "naversearchapp://inappbrowser?url= http%3A%2F%2FtestMall.com%2FcheckResult.nhn%3ForderId%3D20140101123456789",
-    cancelUrl:
-      "naversearchapp://inappbrowser?url= http%3A%2F%2FtestMall.com%2ForderSheet.nhn%3ForderId%3D20140101123456789",
-    capture: "true",
-    confirmUrlType: "CLIENT",
-    extras: {
-      addFriends: [
-        {
-          type: "LINE_AT",
-          idList: ["@aaa", "@bbb"]
-        }
-      ],
-      branchName: "test_branch_1"
-    }
+    confirmUrl: "https://my-project-9d06f.firebaseapp.com/Order/BuyAll"
   };
   request.post(
     "https://sandbox-api-pay.line.me/v2/payments/request",

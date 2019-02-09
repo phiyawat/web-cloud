@@ -26,7 +26,14 @@ app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 
 app.get("/", function(req, res) {
-  res.send("<h1>Hello Node.js</h1>");
+  res.send(
+    "<meta property='og:image' content='https://firebasestorage.googleapis.com/v0/b/my-project-9d06f.appspot.com/o/image%2F46453079_289614934991275_4718699032732499968_n.jpg?alt=media&token=cf42a6d3-cd02-455e-aadc-04fc477295a2' />" +
+      "<meta property='og:url' content='https://phiyawat-comsci.herokuapp.com/'>" +
+      "<meta property='og:type' content='website'/>" +
+      "<meta property='og:title' content='phiyawat-comsci.herokuapp.com'/>" +
+      "<meta property='og:description' content='TU more sheet แหล่งซื้อขายชีทสรุปของธรรมศาสตร์'/>" +
+      "<meta property='fb:app_id' content='512026392655945'"
+  );
 });
 
 app.get("/list/:id", function(req, res) {

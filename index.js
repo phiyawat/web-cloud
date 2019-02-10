@@ -92,6 +92,32 @@ app.post("/charges", function(req, res) {
   );
 });
 
+app.post("/confirm", function(req, res) {
+  var data = req.body;
+  var headers = {
+    "Content-Type": "application/json",
+    "X-LINE-ChannelId": "1634944383",
+    "X-LINE-ChannelSecret": "61ccd09a220863c54c519a88cba9d1d1",
+    "X-LINE-MerchantDeviceProfileId": "DEVICE PROFILE ID"
+  };
+  var dataString = {
+    amount: data.prices,
+    currency: "THB"
+  };
+  request.post(
+    "https://sandbox-api-pay.line.me/v2/payments/" +
+      data.transactionId +
+      "/confirm",
+    {
+      headers: headers,
+      body: JSON.stringify(dataString)
+    },
+    function(error, response, body) {
+      res.send(body);
+    }
+  );
+});
+
 app.post("/linePay", function(req, res) {
   var data = req.body;
   var headers = {
@@ -104,7 +130,7 @@ app.post("/linePay", function(req, res) {
     productName: "TUMoreSheet",
     amount: data.prices,
     currency: "THB",
-    orderId: "20140101123456789",
+    orderId: data.date,
     confirmUrl: "https://my-project-9d06f.firebaseapp.com/BuyComplete",
     cancelUrl: "https://my-project-9d06f.firebaseapp.com/BuyCancel"
   };

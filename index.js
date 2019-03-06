@@ -131,8 +131,8 @@ app.post("/linePay", function(req, res) {
     amount: data.prices,
     currency: "THB",
     orderId: data.date,
-    confirmUrl: "https://my-project-9d06f.firebaseapp.com/BuyComplete",
-    cancelUrl: "https://my-project-9d06f.firebaseapp.com/BuyCancel"
+    confirmUrl: "https://moresheet.co/BuyComplete",
+    cancelUrl: "https://moresheet.co/BuyCancel"
   };
   request.post(
     "https://sandbox-api-pay.line.me/v2/payments/request",

@@ -146,6 +146,50 @@ app.post("/linePay", function(req, res) {
   );
 });
 
+app.post("/confirmPrompt", function(req, res) {
+  var data = req.body;
+  var headers = {
+    "Content-Type": "application/x-www-form-urlencoded",
+  };
+  var dataString = {
+    ID: data.transactionId,
+    secret: "moresheet88724"
+  };
+  request({
+		  url:"https://poomrokc.services:4242/confirm",
+		  method:"POST",
+		  headers: headers,
+		  form: dataString
+	},
+    function(error, response, body) {
+      res.send(body);
+    }
+  );
+});
+
+app.post("/promptPay", function(req, res) {
+  var data = req.body;
+  var headers = {
+    "Content-Type": "application/x-www-form-urlencoded",
+  };
+  var dataString = {
+    fourDigit: data.fourDigit,
+    amount: data.prices,
+    time: data.time,
+	secret:"moresheet88724"
+  };
+  request({
+		  url:"https://poomrokc.services:4242/createTrans",
+		  method:"POST",
+		  headers: headers,
+		  form: dataString
+	},
+    function(error, response, body) {
+      res.send(body);
+    }
+  );
+});
+
 app.get("/index", function(req, res) {
   res.send("<h1>This is index page</h1>");
 });
